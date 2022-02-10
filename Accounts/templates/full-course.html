@@ -1,0 +1,94 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{course_name}}</title>
+   
+    <!-- css link -->
+    {% include 'css.html' %}
+
+</head>
+<body>
+
+   {% if messages%}
+        {%for message in messages%}
+    <div class="alert alert-dismissible alert-{{message.tags}}">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+ {{message}}
+</div>
+        {%endfor%}
+        {%endif%}
+  
+    {% if user.is_authenticated%}
+    {%if user.profile.email_verified%}
+{%else%}
+<div class="container-fluid text-center py-3 text-center">
+<h5 style="color: #1a1a1a;">Your Email <span class="text-danger"> {{user.email}} </span> is not verified </h5>
+<form method="post">{% csrf_token%}
+    <button class="mx-3 btn btn-dark px-5 py-2">verify now</button>
+</form></div>
+    {%endif%}
+    {%endif%}
+    
+<!-- navabar -->
+{% include 'nav.html' %}
+
+
+
+<div class="container mt-5">
+    <h1 class="text-dark">{{course_name}}</h1> <br>
+    <img src="{{course.thumbnail.url}}" class="img-fluid" alt="">
+</div>
+
+
+<div class="container mt-5">
+    <div class="col-sm-6">
+        {% for lectures in lecture%}
+
+        <video width="400" height="240" controls poster="{{course.thumbnail.url}}">
+            <source src="{{lectures.video.url}}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+
+          <h3 class="text-dark">{{lectures.lecture_name}}</h3>
+          <p>{{lectures.desc}}</p>
+
+          <br>
+
+        {%endfor%}
+    </div>
+</div>
+
+<div class="container my-5">
+
+    <h1 class="text-dark">Comments</h1> <hr>
+    <form method="POST">{%csrf_token%}
+    <textarea required name="comment" class="form-control" cols="20" rows="10"></textarea> <br>
+    <button class="px-5  btn btn-dark">Submit</button>
+    </form>
+    
+</div>
+
+<br>
+
+<div class="container my-5">
+    {% for comments in comment%}
+
+        <img src="{{comments.user.profile.image.url}}" style="width:90px;border-radius:50%;" alt="">
+        <span>{{comments.user.first_name}} {{comments.user.last_name}}</span>
+        <p class="mx-5 px-5">{{comments.comment}}</p>
+    {%endfor%}
+</div>
+<!-- footer -->
+
+{%include 'footer.html' %}
+
+
+
+     <!-- js link -->
+     {% include 'js.html' %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+
+     <!-- css link -->
+     {% include 'css.html' %}
+</head>
+<body>
+   <div class="container text-center success mt-5">
+       <!-- <img src="{% static 'images/success.jpeg'%}" class="img-fluid" style="width:30rem;"> -->
+       <i class="fas check-circle fa-check-circle text-success display-1"></i>
+       <h3 class="mt-3">Payment was processed successfully</h3>
+       <small>You will redirect in 5 seconds</small> <br> <br>
+
+
+       <div class="mx-auto p-5 payment-card shadow-lg">
+           <h5>Subscription Type - <span class="text-tomato">{{request.session.type}}</span></h5>
+           <h5>Paid - <span class="text-tomato">{{request.session.price}}</span></h5>
+           <h5>Payment Method - <span class="text-tomato">Paypal</span></h5>
+       </div>
+<br>
+       <a href="/subscribe/" class="btn custom-btn px-5 shadow-lg">Go Back</a>
+   </div>
+
+
+    <script>
+       setTimeout(function(){
+            window.location.href = '/subscribe/';
+         }, 5000);
+   </script> 
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-OTP</title>
+ <!-- css link -->
+ {% include 'css.html' %}
+
+</head>
+<body>
+    
+
+    
+
+   <!-- Login-OTP form -->
+
+   <div class="login-otp-form p-5 mx-auto shadow-sm">
+
+     <!-- Message -->
+
+   {% if messages%}
+
+   {%for message in messages%}
+<div class="container mt-3 message alert alert-{{message.tags}} text-center">{{message}}</div>
+   {%endfor%}
+
+   {%endif%}
+
+   <h5 class="text-dark">An OTP has been send to your registered mobile number</h5>
+   <form method="POST"> {% csrf_token%}
+      <input type="text" class="px-2 form-control" name="otp" placeholder="paste an OTP here" required>
+      <button class="btn custom-btn px-5 mt-2 shadow">Submit</button>
+   </form>
+   </div>
+
+
+
+
+
+
+    <!-- js link -->
+    {% include 'js.html' %}
+</body>
+</html>

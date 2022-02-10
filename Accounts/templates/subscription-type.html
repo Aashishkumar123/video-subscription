@@ -1,0 +1,64 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription | {{type}}</title>
+    {% include 'css.html'%}
+</head>
+<body>
+
+    
+
+    <div class="subscription-plan mx-auto shadow-lg p-5">
+
+        <h5 class="text-center">{{pricing.type}}</h5>
+        <h1 class="display-1 text-center">${{pricing.price}}<span class="text-dark" style="font-size: 20px;">/{{pricing.duration}}</span></h1>
+    <br>
+        <ul>
+           {{pricing.description|safe}}
+        </ul>
+    <br> <br>
+
+        </form>
+            <div id="paypal-button-container"></div>
+        </div>
+
+
+        <form id="submit" method="post"> {%csrf_token%}
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AWzdr7NoMQfzfC4zzz2hstdhcYIhtY92PAGv8_JNSjBiezGJxUbE8wlByuvppNFpIKmwWF_0-SRmGlwX&currency=USD" data-sdk-integration-source="button-factory"></script>
+      <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: "{{pricing.price}}"
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    document.getElementById('submit').submit()
+                    
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+
+
+    {% include 'js.html'%}
+</body>
+</html>

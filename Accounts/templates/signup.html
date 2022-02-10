@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+
+      <!-- css link -->
+      {% include 'css.html' %}
+
+</head>
+<body>
+    
+{% include 'nav.html'%}
+
+
+<div class="mx-auto signup-form p-5 mb-5 shadow">
+    <h1 class="text-dark">Signup</h1><hr>
+
+    <form method="POST" novalidate>{%csrf_token%}
+        <div class="form-group">
+
+        {% for f in fm%}
+            <span class="text-danger">{{f.errors}}</span>
+            {{f}} <br>
+        {%endfor%}
+            <span class="text-danger">{{up.phone_number.errors}}</span>
+            {{up.phone_number}} <br>
+        </div>
+        <button class="btn custom-btn shadow px-5" name="registration">Create Account</button>
+    </form>
+
+
+    <div class="text-center mt-4">
+        <small>Already have an account? <a href="/login/">Log In</a></small>
+    </div>
+
+</div>
+
+
+
+
+
+
+     <!-- js link -->
+     {% include 'js.html' %}
+</body>
+</html>

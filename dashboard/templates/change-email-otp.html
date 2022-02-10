@@ -1,0 +1,86 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Change Email OTP</title>
+
+    <!-- css link -->
+    {% include 'css.html' %}
+</head>
+<body>
+    <div class="sidebar border shadow" id="sidebar">
+           <center> <a href="/">
+                <svg width="50" height="50" viewBox="0 0 102 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M27 49.2535C26.3464 49.166 25.6797 49.0904 25 49.028V34.6L26 33L27 33.4011V49.2535C42.8034 51.3708 50.97 60.5 50.97 60.5C64.223 46.563 86 49 86 49C83.35 40.877 76 33 76 33L50.97 43.0155L26 33L16 49C20.0023 48.6727 23.6706 48.8075 27 49.2535ZM51 0L102 20L51 40L0 20L51 0ZM46 20C46 18.3431 48.2386 17 51 17C53.7614 17 56 18.3431 56 20C56 21.6569 53.7614 23 51 23C50.258 23 49.5538 22.903 48.9206 22.7291L28.0137 30.9851L24.298 29.5281L46.1908 20.8237C46.0665 20.562 46 20.2856 46 20ZM23 56.0095C23 54.3474 24.3465 53 26 53C27.6569 53 29 54.3366 29 56.0095V69H23V56.0095Z" fill="#F9671E"/>
+                    </svg>
+              </a></center>
+            
+            <ul class="py-5">
+                <a href="/dashboard/profile/" class="text-dark" style="text-decoration: none;"> <li class="non-active"> <i class="fas fa-user-circle" ></i></li></a><br>
+                <a href="/dashboard/profile/edit/" style="text-decoration: none;"> <li class="text-tomato"><i class="fas fa-edit"></i></li></a><br>
+                <a href="/dashboard/subscription/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-bell"></i></li></a><br>
+                <a href="/dashboard/courses/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-video"></i></li></a><br>
+                <a href="/dashboard/monetisation/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-dollar-sign"></i></li></a><br>
+                <a href="/dashboard/analytics/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-chart-line"></i></li></a><br>
+                <a href="/dashboard/notification/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-bell"></i></li></a><br>
+                <a href="/dashboard/settings/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-cog"></i></li></a><br>
+                <a href="/logout/" class="text-dark" style="text-decoration: none;"> <li class="non-active"><i class="fas fa-sign-out-alt"></i></li></a><br>
+               </ul> <br> <br> <br> <br>
+              <div class="text-center mt-3"> <img src="{{user.profile.image.url}}" class="shadow-lg" style="width: 50px;border-radius: 50%;" alt=""></div>
+        </div>
+
+      
+            <div class="edit-profile">
+
+                <div class="row">
+
+                    <div class="col-sm-7 p-5 mt-5">
+                      {% if messages%}
+                      {%for message in messages%}
+                      <div class="alert alert-dismissible alert-{{message.tags}}">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                       {{message}}
+                      </div>
+                      {%endfor%}
+
+                      {%endif%}
+                        <h5 class="text-dark">Change Email</h5> <hr>
+                    <form method="post" enctype="multipart/form-data"> {%csrf_token%}
+                      <div class="form-group">
+                          <input type="text" required name="otp" class="form-control" placeholder="paste an otp here "> <br>
+                       </div>
+
+                      <button class="btn btn-dark px-5">Submit</button>
+                    </form>
+
+
+                       
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    <div class="col-sm-4 p-5">
+                      <div class="list-group shadow">
+                        <a href="/dashboard/profile/edit/" class="list-group-item list-group-item-action">Edit Profile</a>
+                        <a href="/dashboard/profile/edit/password/" class="list-group-item list-group-item-action">Change Password</a>
+                        <a href="/dashboard/profile/edit/email/" class="list-group-item list-group-item-action active">Change Email Address</a>
+                        <a href="/dashboard/profile/edit/phone-number/" class="list-group-item list-group-item-action">Change Phone Number</a>
+                      </div>
+                        
+                </div>
+
+
+            </div>
+
+
+
+
+    {%include 'js.html'%}
+
+</body>
+</html>

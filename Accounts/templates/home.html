@@ -1,0 +1,86 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Video Subscription</title>
+   
+    <!-- css link -->
+    {% include 'css.html' %}
+
+</head>
+<body>
+
+   {% if messages%}
+        {%for message in messages%}
+    <div class="alert alert-dismissible alert-{{message.tags}}">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+ {{message}}
+</div>
+        {%endfor%}
+        {%endif%}
+  
+    {% if user.is_authenticated%}
+    {%if user.profile.email_verified%}
+{%else%}
+<div class="container-fluid text-center py-3 text-center">
+<h5 style="color: #1a1a1a;">Your Email <span class="text-danger"> {{user.email}} </span> is not verified </h5>
+<form method="post">{% csrf_token%}
+    <button class="mx-3 btn btn-dark px-5 py-2">verify now</button>
+</form></div>
+    {%endif%}
+    {%endif%}
+    
+<!-- navabar -->
+{% include 'nav.html' %}
+
+
+{% comment %} 
+
+
+<section class="container-fluid text-center mb-5 p-5">
+         <a href="" class="btn custom-btn p-4 mx-5 mt-3 btn text-white shadow-lg"><i class="fas fa-chalkboard-teacher"></i> Become an instructor</a>
+         <a href="" class="btn p-4 mt-3 btn bg-white shadow-lg text-tomato"><i class="fas fa-external-link-alt"></i> Join our Affilate Program</a>
+        
+</section> {% endcomment %}
+
+
+<div class="container mt-5">
+    
+    <div class="row">
+        {%for courses in course%}
+        <div class="col-sm-4">
+            <a href="/{{courses.course_name}}/{{courses.id}}/" style="text-decoration: none;">
+    <div class="card mb-3 shadow">
+        <img src="{{courses.thumbnail.url}}" alt="">  
+        <div class="card-body">
+        <h5 class="text-dark py-2">{{courses.course_name}}</h5>
+        <img src="{{courses.user.profile.image.url}}" style="width: 60px;border-radius: 50%;" alt="">
+        <span>{{courses.user.first_name}} {{courses.user.last_name}}</span>
+        </div>
+        
+        <div class="card-footer py-3 text-muted">
+        {{courses.datetime}}
+        </div>
+      </div>
+      </a>
+    </div>
+
+    {%endfor%}
+    </div>
+    
+</div>
+
+
+<!-- footer -->
+
+{%include 'footer.html' %}
+
+
+
+     <!-- js link -->
+     {% include 'js.html' %}
+</body>
+</html>

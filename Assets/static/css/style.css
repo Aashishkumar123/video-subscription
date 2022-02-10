@@ -1,0 +1,84 @@
+
+*{margin:0;padding: 0;box-sizing: border-box;}
+
+.text-tomato{
+    color: tomato;
+}
+ul li{
+    list-style-type: none;
+}
+
+.custom-btn{
+    background-color: tomato;
+    color: white;
+}
+
+.login-form{
+    width: 30rem;
+    margin-top: 7rem;
+}
+.signup-form{
+    width: 35rem;
+    margin-top: 3rem;
+}
+.login-otp-form, .signup-otp-form, .email-verify {
+    width: 48rem;
+    margin-top: 3rem;
+}
+
+.subscribe .row .col-sm-3 .Basic , .Advance, .VIP, .Premium {
+    background-color: #1a1a1a;
+    color: white;
+}
+.subscribe .row .col-sm-3 .Premium , .VIP,  .Advance , .Basic,  h1 {
+    color: white;
+}
+.subscribe .row .col-sm-3 .plans h1, .subscribe .row .col-sm-3 .plans  h5 {
+    color: #1a1a1a;
+}
+
+.subscription-plan{
+    width: 25rem;
+    margin-top: 5rem;
+    background-color: #1a1a1a;
+    color:white;
+}
+.subscription-plan h1,h5{
+    color: white;
+}
+
+.success .payment-card{
+    width: 30rem;
+    background-color: #1a1a1a;
+    color:white;
+
+}
+
+
+.sidebar{
+    width: 5rem;
+    background-color: #1a1a1a;
+    height: 100%;
+    position: fixed;
+    z-index:1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.non-active{
+    transition: 0.3s;
+}
+.non-active:hover{
+    color: tomato;
+}
+.profile, .edit-profile{
+    margin-left: 5rem;
+    height: 100vh;
+}
+.profile .row .col-sm-4{
+    background-color: #1a1a1a;
+    height: 100vh;
+}
+
+

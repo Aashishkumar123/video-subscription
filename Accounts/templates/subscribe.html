@@ -1,0 +1,475 @@
+{%load group%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe</title>
+
+    <!-- css link -->
+    {% include 'css.html' %}
+</head>
+<body>
+
+    {%include 'nav.html' %}
+    
+
+
+ <div class="container my-5 subscribe">
+
+    <h1 class="text-center text-tomato">Pricing</h1>
+    <p class="text-center text-muted">Choose the best plans for you and enjoy the best course for free</p>
+
+    <!-- BASIC PLAN -->
+ {% if request.user|has_group:"BASIC" %}
+ 
+ 
+ <div class="row mt-5">
+    
+    <div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow Basic"> 
+    
+        <h5 class="text-center">{{basic.type}}</h5>
+        <h1 class="display-4 text-center">${{basic.price}}<span class="text-dark" style="font-size: 20px;">/{{basic.duration}}</span></h1>
+    <br>
+        <ul>
+        {{basic.description|safe}}   
+        </ul>
+        <div class="text-center"><i class="fas check-circle fa-check-circle text-success display-1"></i></div>
+    <br> <br>
+    <div class="text-center">
+       <button class="px-5 btn custom-btn disabled">Enrolled</button>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{advance.type}}</h5>
+            <h1 class="display-4 text-center">${{advance.price}}<span class="text-dark" style="font-size: 20px;">/{{advance.duration}}</span></h1>
+        <br>
+            <ul>
+                {{advance.description|safe}}
+            </ul>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{vip.type}}</h5>
+            <h1 class="display-4 text-center">${{vip.price}}<span class="text-dark" style="font-size: 20px;">/{{vip.duration}}</span></h1>
+        <br>
+            <ul>
+                {{vip.description|safe}}
+            </ul>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{premium.type}}</h5>
+            <h1 class="display-4 text-center">${{premium.price}}<span class="text-dark" style="font-size: 20px;">/{{premium.duration}}</span></h1>
+        <br>
+            <ul>
+                {{premium.description|safe}}
+            </ul>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    </div>
+    </div>
+
+  <!-- END   -->
+
+
+<!-- ADVANCE PLAN -->
+
+{% elif request.user|has_group:"ADVANCE" %}
+ 
+ 
+ <div class="row mt-5">
+    
+    <div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+    
+        <h5 class="text-center">{{basic.type}}</h5>
+        <h1 class="display-4 text-center">${{basic.price}}<span class="text-dark" style="font-size: 20px;">/{{basic.duration}}</span></h1>
+    <br>
+        <ul>
+        {{basic.description|safe}}   
+        </ul>
+    <br> 
+    <div class="text-center">
+       <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow Advance"> 
+    
+            <h5 class="text-center">{{advance.type}}</h5>
+            <h1 class="display-4 text-center">${{advance.price}}<span class="text-dark" style="font-size: 20px;">/{{advance.duration}}</span></h1>
+        <br>
+            <ul>
+                {{advance.description|safe}}
+            </ul>
+            <div class="text-center "><i class="fas check-circle fa-check-circle text-success display-1"></i></div>
+        <br> <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enrolled</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{vip.type}}</h5>
+            <h1 class="display-4 text-center">{{vip.price}}<span class="text-dark" style="font-size: 20px;">/{{vip.duration}}</span></h1>
+        <br>
+            <ul>
+                {{vip.description|safe}}
+            </ul>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{premium.type}}</h5>
+            <h1 class="display-4 text-center">${{premium.price}}<span class="text-dark" style="font-size: 20px;">/{{premium.duration}}</span></h1>
+        <br>
+            <ul>
+                {{premium.description|safe}}
+            </ul>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    </div>
+    </div>
+
+<!-- END -->
+
+
+
+<!-- VIP PLAN -->
+
+{% elif request.user|has_group:"VIP" %}
+ 
+ 
+ <div class="row mt-5">
+    
+    <div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+    
+        <h5 class="text-center">{{basic.type}}</h5>
+        <h1 class="display-4 text-center">${{basic.price}}<span class="text-dark" style="font-size: 20px;">/{{basic.duration}}</span></h1>
+    <br>
+        <ul>
+        {{basic.description|safe}}   
+        </ul>
+        
+    <br> 
+    <div class="text-center">
+       <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{advance.type}}</h5>
+            <h1 class="display-4 text-center">${{advance.price}}<span class="text-dark" style="font-size: 20px;">/{{advance.duration}}</span></h1>
+        <br>
+            <ul>
+                {{advance.description|safe}}
+            </ul>
+           <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow VIP"> 
+    
+            <h5 class="text-center">{{vip.type}}</h5>
+            <h1 class="display-4 text-center">${{vip.price}}<span class="text-dark" style="font-size: 20px;">/{{vip.duration}}</span></h1>
+        <br>
+            <ul>
+                {{vip.description|safe}}
+            </ul>
+            <div class="text-center "><i class="fas check-circle fa-check-circle text-success display-1"></i></div>
+        
+        <br> <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enrolled</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{premium.type}}</h5>
+            <h1 class="display-4 text-center">${{premium.price}}<span class="text-dark" style="font-size: 20px;">/{{premium.duration}}</span></h1>
+        <br>
+            <ul>
+                {{premium.description|safe}}
+            </ul>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    </div>
+    </div>
+
+<!-- END -->
+
+
+
+<!-- PREMIUM PLAN -->
+
+{% elif request.user|has_group:"PREMIUM" %}
+ 
+ 
+ <div class="row mt-5">
+    
+    <div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+    
+        <h5 class="text-center">{{basic.type}}</h5>
+        <h1 class="display-4 text-center">${{basic.price}}<span class="text-dark" style="font-size: 20px;">/{{basic.duration}}</span></h1>
+    <br>
+        <ul>
+        {{basic.description|safe}}   
+        </ul>
+        
+    <br> 
+    <div class="text-center">
+       <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{advance.type}}</h5>
+            <h1 class="display-4 text-center">${{advance.price}}<span class="text-dark" style="font-size: 20px;">/{{advance.duration}}</span></h1>
+        <br>
+            <ul>
+                {{advance.description|safe}}
+            </ul>
+           <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow plans"> 
+    
+            <h5 class="text-center">{{vip.type}}</h5>
+            <h1 class="display-4 text-center">${{vip.price}}<span class="text-dark" style="font-size: 20px;">/{{vip.duration}}</span></h1>
+        <br>
+            <ul>
+                {{vip.description|safe}}
+            </ul>
+             <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enroll Now</button>
+        </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 mt-5">
+        <div class="py-5 px-4 shadow Premium"> 
+    
+            <h5 class="text-center">{{premium.type}}</h5>
+            <h1 class="display-4 text-center">${{premium.price}}<span class="text-dark" style="font-size: 20px;">/{{premium.duration}}</span></h1>
+        <br>
+            <ul>
+                {{premium.description|safe}}
+            </ul>
+            <div class="text-center"><i class="fas check-circle fa-check-circle text-success display-1"></i></div>
+        <br>
+        <br>
+        <div class="text-center">
+            <button class="px-5 btn custom-btn disabled">Enrolled</button>
+        </div>
+        </div>
+    </div>
+    
+    </div>
+    </div>
+
+<!-- END -->
+
+
+
+ {%else%}
+    <div class="row">
+      
+<div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+
+        <h5 class="text-center">{{basic.type}}</h5>
+        <h1 class="display-4 text-center">${{basic.price}}<span class="text-dark" style="font-size: 20px;">/{{basic.duration}}</span></h1>
+    <br>
+        <ul>
+           {{basic.description|safe}}
+        </ul>
+    <br> <br>
+    <div class="text-center">
+        {% if user.is_authenticated%}
+       <a href="/subscribe/{{basic.type}}/" class="btn custom-btn shadow-lg px-5">Enroll Now</a>
+        {%else%}
+        <a href="/signup/" class="btn custom-btn shadow-lg px-5">Signup Today</a>
+        {%endif%}
+    </div>
+    </div>
+</div>
+
+
+     
+<div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+
+        <h5 class="text-center">{{advance.type}}</h5>
+        <h1 class="display-4 text-center">${{advance.price}}<span class="text-dark" style="font-size: 20px;">/{{advance.duration}}</span></h1>
+    <br>
+        <ul>
+           {{advance.description|safe}}
+        </ul>
+    <br> <br>
+    <div class="text-center">
+        {% if user.is_authenticated%}
+       <a href="/subscribe/{{advance.type}}/" class="btn custom-btn shadow-lg px-5">Enroll Now</a>
+        {%else%}
+        <a href="/signup/" class="btn custom-btn shadow-lg px-5">Signup Today</a>
+        {%endif%}
+    </div>
+    </div>
+</div>
+
+
+     
+<div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+
+        <h5 class="text-center">{{vip.type}}</h5>
+        <h1 class="display-4 text-center">${{vip.price}}<span class="text-dark" style="font-size: 20px;">/{{vip.duration}}</span></h1>
+    <br>
+        <ul>
+           {{vip.description|safe}}
+        </ul>
+    <br> <br>
+    <div class="text-center">
+        {% if user.is_authenticated%}
+       <a href="/subscribe/{{vip.type}}/" class="btn custom-btn shadow-lg px-5">Enroll Now</a>
+        {%else%}
+        <a href="/signup/" class="btn custom-btn shadow-lg px-5">Signup Today</a>
+        {%endif%}
+    </div>
+    </div>
+</div>
+
+     
+<div class="col-sm-3 mt-5">
+    <div class="py-5 px-4 shadow plans"> 
+
+        <h5 class="text-center">{{premium.type}}</h5>
+        <h1 class="display-4 text-center">${{premium.price}}<span class="text-dark" style="font-size: 20px;">/{{premium.duration}}</span></h1>
+    <br>
+        <ul>
+           {{premium.description|safe}}
+        </ul>
+    <br> <br>
+    <div class="text-center">
+        {% if user.is_authenticated%}
+       <a href="/subscribe/{{premium.type|lower}}/" class="btn custom-btn shadow-lg px-5">Enroll Now</a>
+        {%else%}
+        <a href="/signup/" class="btn custom-btn shadow-lg px-5">Signup Today</a>
+        {%endif%}
+    </div>
+    </div>
+</div>
+    </div>
+
+
+
+    {%endif%}
+    </div>
+
+
+
+
+
+
+
+
+
+
+    {% include 'js.html' %}
+</body>
+</html>
